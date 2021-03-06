@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngxs/store";
+import { AddItem } from "../../store/items.state";
 
 interface Food {
   value: string;
@@ -19,7 +22,18 @@ export class AddItemComponent implements OnInit {
     { value: "tacos-2", viewValue: "Tacos" }
   ];
 
-  constructor() {}
+  constructor(private router: Router, private store: Store) {}
 
   ngOnInit(): void {}
+
+  submit() {
+    this.store.dispatch(
+      new AddItem({
+        section: "222",
+        co2: "co222",
+        feeling: "sad222"
+      })
+    );
+    this.router.navigate(["/"]);
+  }
 }

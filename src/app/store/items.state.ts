@@ -1,35 +1,35 @@
+import { Injectable } from "@angular/core";
 import { State, Action, StateContext } from "@ngxs/store";
 
-export class Add {
-  static readonly type = "Add";
-}
-
-export interface ItemStateModel {
+export interface Item {
   section: string;
   co2: string;
   feeling: string;
 }
 
-@State<ItemStateModel[]>({
+export class AddItem {
+  static readonly type = "AddItem";
+  constructor(public payload: Item) {}
+}
+
+export interface ItemStateModel {
+  items: Item[];
+}
+
+@State<ItemStateModel>({
   name: "items",
-  defaults: [
-    {
-      section: "s1",
-      co2: "co2",
-      feeling: "sad"
-    }
-  ]
+  defaults: {
+    items: []
+  }
 })
+@Injectable()
 export class ItemsState {
-  @Action(Add)
-  add({ getState, setState }: StateContext<ItemStateModel>, { payload }: any) {
-    // add({ getState, setState }) {
-    const state = getState();
-    console.log(state);
-    setState({
-      section: "s1",
-      co2: "co2",
-      feeling: "sad"
+  @Action(AddItem)
+  feedZebra(ctx: StateContext<ItemStateModel>, action: AddItem) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      items: [...state.items, action.payload]
     });
   }
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Select } from "@ngxs/store";
+import { Observable } from "rxjs";
+import { ItemsState } from "../../store/items.state";
 
 export interface PeriodicElement {
   name: string;
@@ -30,9 +33,15 @@ export class ListItemsComponent implements OnInit {
   displayedColumns: string[] = ["position", "name", "weight", "symbol"];
   dataSource = ELEMENT_DATA;
 
+  @Select(ItemsState) items$: Observable<number>;
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.items$.subscribe(res => {
+      console.log(res);
+    });
+  }
 
   addNewItem() {
     this.router.navigate(["/add-item"]);
