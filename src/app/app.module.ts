@@ -16,6 +16,7 @@ import { DataService } from "./services/data.service";
 import { ItemsState } from "./store/items.state";
 import { MatDialogModule } from "@angular/material/dialog";
 import { EditEmojiDialog } from "./modules/add-item/edit-emoji/edit-emoji.component";
+import { PickerModule } from "@ctrl/ngx-emoji-mart";
 
 const appRoutes: Routes = [
   { path: "", component: ListItemsComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    PickerModule
   ],
   entryComponents: [EditEmojiDialog],
   declarations: [

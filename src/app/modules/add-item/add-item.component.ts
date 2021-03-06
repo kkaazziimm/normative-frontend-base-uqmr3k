@@ -4,7 +4,7 @@ import { MatDialog } from "@angular/material";
 import { Router } from "@angular/router";
 import { Store } from "@ngxs/store";
 import { AddItem } from "../../store/items.state";
-import { EditEmojiDialog } from "./edit-emoji/edit-emoji.component";
+import { EditEmojiDialogComponent } from "./edit-emoji/edit-emoji.component";
 
 interface Sector {
   value: string;
@@ -43,7 +43,7 @@ export class AddItemComponent implements OnInit {
   }
 
   editEmoji() {
-    const dialogRef = this.dialog.open(EditEmojiDialog);
+    const dialogRef = this.dialog.open(EditEmojiDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
