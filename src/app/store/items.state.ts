@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { State, Action, StateContext } from "@ngxs/store";
-import { Item } from "../modals/item.modal";
+import { Item } from "../models/item.model";
 
 export class AddItem {
   static readonly type = "AddItem";

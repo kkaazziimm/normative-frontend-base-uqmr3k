@@ -10,10 +10,12 @@ import { ListItemsComponent } from "./modules/list-items/list-items.component";
 import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { DataService } from "./services/data.service";
 import { ItemsState } from "./store/items.state";
+import { MatDialogModule } from "@angular/material/dialog";
+import { EditEmojiDialog } from "./modules/add-item/edit-emoji/edit-emoji.component";
 
 const appRoutes: Routes = [
   { path: "", component: ListItemsComponent },
@@ -25,14 +27,22 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     NgxsModule.forRoot([ItemsState]),
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatButtonModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
-  declarations: [AppComponent, ListItemsComponent, AddItemComponent],
+  entryComponents: [EditEmojiDialog],
+  declarations: [
+    AppComponent,
+    ListItemsComponent,
+    AddItemComponent,
+    EditEmojiDialog
+  ],
   bootstrap: [AppComponent],
   providers: [DataService]
 })

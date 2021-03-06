@@ -1,16 +1,16 @@
-<form>
+<form [formGroup]="itemForm">
   <mat-form-field appearance="fill">
-    <mat-label>Favorite food</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="food">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
+    <mat-label>Sector</mat-label>
+    <mat-select formControlName="sector">
+      <mat-option *ngFor="let sector of sectors" [value]="sector.value">
+        {{sector.value}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput placeholder="Ex. pat@example.com">
+  <mat-form-field class="">
+    <mat-label>CO2</mat-label>
+    <input type="number" matInput formControlName="co2" placeholder="123">
   </mat-form-field>
-  <button mat-raised-button>Edit</button>
+  <button mat-raised-button (click)="editEmoji()">Edit</button>
   <button mat-raised-button (click)="submit()">Submit</button>
 </form>

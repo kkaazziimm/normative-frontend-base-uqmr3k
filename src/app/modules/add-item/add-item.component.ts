@@ -1,11 +1,13 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { MatDialog } from "@angular/material";
 import { Router } from "@angular/router";
 import { Store } from "@ngxs/store";
 import { AddItem } from "../../store/items.state";
+import { EditEmojiDialog } from "./edit-emoji/edit-emoji.component";
 
-interface Food {
+interface Sector {
   value: string;
-  viewValue: string;
 }
 
 @Component({
@@ -15,16 +17,38 @@ interface Food {
 })
 export class AddItemComponent implements OnInit {
   selectedValue: string;
+  itemForm: FormGroup;
 
-  foods: Food[] = [
-    { value: "steak-0", viewValue: "Steak" },
-    { value: "pizza-1", viewValue: "Pizza" },
-    { value: "tacos-2", viewValue: "Tacos" }
+  sectors: Sector[] = [
+    { value: "IT" },
+    { value: "Finance" },
+    { value: "Medical" },
+    { value: "Insurance" },
+    { value: "Travel" }
   ];
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(
+    private router: Router,
+    private store: Store,
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.itemForm = this.formBuilder.group({
+      sector: [""],
+      co2: [""],
+      feeling: [""]
+    });
+  }
+
+  editEmoji() {
+    const dialogRef = this.dialog.open(EditEmojiDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   submit() {
     this.store.dispatch(
