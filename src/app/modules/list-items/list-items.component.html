@@ -1,22 +1,17 @@
-<button mat-raised-button color="primary" (click)="addNewItem()">Primary</button>
-
 <ng-container *ngIf="data$ | async as data">
   <mat-table [dataSource]="data.items" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="section">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.section}} </mat-cell>
+    <ng-container matColumnDef="sector">
+      <mat-header-cell *matHeaderCellDef> Sector </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sector}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="co2">
-      <mat-header-cell *matHeaderCellDef> co2 </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> CO2 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.co2}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="feeling">
-      <mat-header-cell *matHeaderCellDef> feeling </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Feeling </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.feeling}} </mat-cell>
     </ng-container>
 

@@ -1,5 +1,5 @@
 export interface Item {
-  section: string;
+  sector: string;
   co2: string;
-  feeling: string;
+  feeling: object;
 }

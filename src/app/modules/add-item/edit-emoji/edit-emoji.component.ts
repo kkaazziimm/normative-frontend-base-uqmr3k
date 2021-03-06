@@ -1,18 +1,27 @@
 import { Component, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: "edit-emoji-dialog",
   templateUrl: "edit-emoji.component.html"
 })
 export class EditEmojiDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  currentEmoji: any;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<EditEmojiDialogComponent>
+  ) {}
 
   selectEmoji(event) {
-    console.log(event);
+    this.currentEmoji = event;
   }
 
-  cancel() {}
+  cancel() {
+    this.dialogRef.close();
+  }
 
-  submit() {}
+  submit() {
+    this.dialogRef.close(this.currentEmoji);
+  }
 }

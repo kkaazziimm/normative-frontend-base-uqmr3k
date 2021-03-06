@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { MatDialog } from "@angular/material";
-import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
 import { Store } from "@ngxs/store";
 import { AddItem } from "../../store/items.state";
 import { EditEmojiDialogComponent } from "./edit-emoji/edit-emoji.component";
@@ -28,7 +27,6 @@ export class AddItemComponent implements OnInit {
   ];
 
   constructor(
-    private router: Router,
     private store: Store,
     private formBuilder: FormBuilder,
     private dialog: MatDialog
@@ -46,18 +44,13 @@ export class AddItemComponent implements OnInit {
     const dialogRef = this.dialog.open(EditEmojiDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.itemForm.patchValue({ feeling: result.emoji.native });
+      }
     });
   }
 
   submit() {
-    this.store.dispatch(
-      new AddItem({
-        section: "222",
-        co2: "co222",
-        feeling: "sad222"
-      })
-    );
-    this.router.navigate(["/"]);
+    this.store.dispatch(new AddItem(this.itemForm.value));
   }
 }

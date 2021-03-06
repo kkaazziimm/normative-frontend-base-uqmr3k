@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterModule, Routes } from "@angular/router";
 import { NgxsModule } from "@ngxs/store";
 
 import { AppComponent } from "./app.component";
@@ -15,13 +14,8 @@ import { MatInputModule } from "@angular/material/input";
 import { DataService } from "./services/data.service";
 import { ItemsState } from "./store/items.state";
 import { MatDialogModule } from "@angular/material/dialog";
-import { EditEmojiDialog } from "./modules/add-item/edit-emoji/edit-emoji.component";
+import { EditEmojiDialogComponent } from "./modules/add-item/edit-emoji/edit-emoji.component";
 import { PickerModule } from "@ctrl/ngx-emoji-mart";
-
-const appRoutes: Routes = [
-  { path: "", component: ListItemsComponent },
-  { path: "add-item", component: AddItemComponent }
-];
 
 @NgModule({
   imports: [
@@ -30,7 +24,6 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([ItemsState]),
-    RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatButtonModule,
     MatSelectModule,
@@ -38,12 +31,12 @@ const appRoutes: Routes = [
     MatDialogModule,
     PickerModule
   ],
-  entryComponents: [EditEmojiDialog],
+  entryComponents: [EditEmojiDialogComponent],
   declarations: [
     AppComponent,
     ListItemsComponent,
     AddItemComponent,
-    EditEmojiDialog
+    EditEmojiDialogComponent
   ],
   bootstrap: [AppComponent],
   providers: [DataService]
