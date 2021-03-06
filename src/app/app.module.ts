@@ -12,7 +12,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
-import { globalState } from "./store";
+import { DataService } from "./services/data.service";
+import { ItemsState } from "./store/items.state";
 
 const appRoutes: Routes = [
   { path: "", component: ListItemsComponent },
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxsModule.forRoot([globalState]),
+    NgxsModule.forRoot([ItemsState]),
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatButtonModule,
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     MatInputModule
   ],
   declarations: [AppComponent, ListItemsComponent, AddItemComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [DataService]
 })
 export class AppModule {}
