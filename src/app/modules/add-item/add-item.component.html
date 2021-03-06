@@ -22,7 +22,10 @@
           <mat-label>CO2</mat-label>
           <input type="number" matInput formControlName="co2" placeholder="123">
           <mat-error *ngIf="itemForm.controls.co2.hasError('required')">
-            Please enter a positive CO2 value
+            Please enter a valid value
+          </mat-error>
+          <mat-error *ngIf="itemForm.controls.co2.hasError('negative')">
+            Please enter a non negative CO2 value
           </mat-error>
         </mat-form-field>
       </div>

@@ -6,11 +6,12 @@
 
   @media screen and (min-width: 768px) {
     padding: 2rem 3rem;
-    max-width: 760px;
   }
 
   @media screen and (min-width: 992px) {
     display: flex;
+    justify-content: center;
+
     .add-item-wrapper {
       width: 40vw;
     }

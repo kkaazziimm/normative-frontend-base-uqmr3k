@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Store } from "@ngxs/store";
 import { AddItem } from "../../store/items.state";
+import { NonNegative } from "./custom-validator.directive";
 import { EditEmojiDialogComponent } from "./edit-emoji/edit-emoji.component";
 
 interface Sector {
@@ -38,6 +39,8 @@ export class AddItemComponent implements OnInit {
       co2: [0, Validators.required],
       feeling: ["😐", Validators.required]
     });
+
+    this.itemForm.setValidators(NonNegative);
   }
 
   editEmoji() {
