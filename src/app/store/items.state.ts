@@ -1,11 +1,6 @@
 import { Injectable } from "@angular/core";
 import { State, Action, StateContext } from "@ngxs/store";
-
-export interface Item {
-  section: string;
-  co2: string;
-  feeling: string;
-}
+import { Item } from "../modals/item.modal";
 
 export class AddItem {
   static readonly type = "AddItem";
@@ -19,7 +14,13 @@ export interface ItemStateModel {
 @State<ItemStateModel>({
   name: "items",
   defaults: {
-    items: []
+    items: [
+      {
+        section: "halil",
+        co2: "co",
+        feeling: "sad"
+      }
+    ]
   }
 })
 @Injectable()

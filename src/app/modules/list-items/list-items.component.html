@@ -1,30 +1,26 @@
 <button mat-raised-button color="primary" (click)="addNewItem()">Primary</button>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-  </ng-container>
+<ng-container *ngIf="data$ | async as data">
+  <mat-table [dataSource]="data.items" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="section">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.section}} </mat-cell>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="co2">
+      <mat-header-cell *matHeaderCellDef> co2 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.co2}} </mat-cell>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-  </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="feeling">
+      <mat-header-cell *matHeaderCellDef> feeling </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.feeling}} </mat-cell>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</ng-container>
