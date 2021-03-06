@@ -16,9 +16,9 @@ export interface ItemStateModel {
   defaults: {
     items: [
       {
-        sector: "norma",
-        co2: "co",
-        feeling: "sad"
+        sector: "IT",
+        co2: "50",
+        feeling: "😐"
       }
     ]
   }

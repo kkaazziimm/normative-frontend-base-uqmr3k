@@ -1,17 +1,41 @@
-<form [formGroup]="itemForm">
-  <mat-form-field appearance="fill">
-    <mat-label>Sector</mat-label>
-    <mat-select formControlName="sector">
-      <mat-option *ngFor="let sector of sectors" [value]="sector.value">
-        {{sector.value}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="">
-    <mat-label>CO2</mat-label>
-    <input type="number" matInput formControlName="co2" placeholder="123">
-  </mat-form-field>
-
-  <button mat-raised-button (click)="editEmoji()">Edit</button>
-  <button mat-raised-button (click)="submit()">Submit</button>
-</form>
+<div class="add-item-wrapper">
+  <mat-card>
+    <div class="form-title">
+      Form
+    </div>
+    <form [formGroup]="itemForm" class="table-add-item">
+      <div class="sector-wrapper">
+        <mat-form-field appearance="fill">
+          <mat-label>Sector</mat-label>
+          <mat-select formControlName="sector">
+            <mat-option *ngFor="let sector of sectors" [value]="sector.value">
+              {{sector.value}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="itemForm.controls.sector.hasError('required')">
+            Please select a Sector
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="co2-wrapper">
+        <mat-form-field class="">
+          <mat-label>CO2</mat-label>
+          <input type="number" matInput formControlName="co2" placeholder="123">
+          <mat-error *ngIf="itemForm.controls.co2.hasError('required')">
+            Please enter a positive CO2 value
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="feeling-wrapper">
+        <p>{{this.itemForm.value.feeling}}</p>
+        <mat-error *ngIf="itemForm.controls.feeling.hasError('required')">
+          Please select an emoji
+        </mat-error>
+        <button mat-stroked-button color="primary" (click)="editEmoji()">Edit Emoji</button>
+      </div>
+      <div class="button-wrapper">
+        <button mat-flat-button color="primary" (click)="submit()">Submit</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

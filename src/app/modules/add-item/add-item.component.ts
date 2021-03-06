@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { Store } from "@ngxs/store";
 import { AddItem } from "../../store/items.state";
@@ -34,9 +34,9 @@ export class AddItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemForm = this.formBuilder.group({
-      sector: [""],
-      co2: [""],
-      feeling: [""]
+      sector: ["", Validators.required],
+      co2: [0, Validators.required],
+      feeling: ["😐", Validators.required]
     });
   }
 
@@ -51,6 +51,8 @@ export class AddItemComponent implements OnInit {
   }
 
   submit() {
-    this.store.dispatch(new AddItem(this.itemForm.value));
+    if (this.itemForm.valid) {
+      this.store.dispatch(new AddItem(this.itemForm.value));
+    }
   }
 }

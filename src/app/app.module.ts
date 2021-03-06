@@ -9,8 +9,9 @@ import { ListItemsComponent } from "./modules/list-items/list-items.component";
 import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DataService } from "./services/data.service";
 import { ItemsState } from "./store/items.state";
 import { MatDialogModule } from "@angular/material/dialog";
@@ -29,6 +30,7 @@ import { PickerModule } from "@ctrl/ngx-emoji-mart";
     MatSelectModule,
     MatInputModule,
     MatDialogModule,
+    MatCardModule,
     PickerModule
   ],
   entryComponents: [EditEmojiDialogComponent],

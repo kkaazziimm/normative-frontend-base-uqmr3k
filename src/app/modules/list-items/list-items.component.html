@@ -1,21 +1,24 @@
-<ng-container *ngIf="data$ | async as data">
-  <mat-table [dataSource]="data.items" class="mat-elevation-z8">
-    <ng-container matColumnDef="sector">
-      <mat-header-cell *matHeaderCellDef> Sector </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.sector}} </mat-cell>
-    </ng-container>
+<div class="list-item-wrapper">
+  <ng-container *ngIf="data$ | async as data">
+    <mat-table [dataSource]="data.items" class="mat-elevation-z8 ">
+      <ng-container matColumnDef="sector">
+        <mat-header-cell *matHeaderCellDef> Sector </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sector}} </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="co2">
-      <mat-header-cell *matHeaderCellDef> CO2 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.co2}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="co2">
+        <mat-header-cell *matHeaderCellDef> CO2 </mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngStyle]="{'color': element.co2 > 25 ? 'red':'green'}"> {{element.co2}}
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="feeling">
-      <mat-header-cell *matHeaderCellDef> Feeling </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.feeling}} </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="feeling">
+        <mat-header-cell *matHeaderCellDef> Feeling </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.feeling}} </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </ng-container>
+</div>
