@@ -1,3 +1,9 @@
-<emoji-mart (emojiClick)="selectEmoji($event)"></emoji-mart>
-<button mat-raised-button (click)="submit()">OK</button>
-<button mat-raised-button (click)="cancel()">Cancel</button>
+<div class="edit-emoji-wrapper">
+  <div class="emoji-wrapper">
+    <emoji-mart (emojiClick)="selectEmoji($event)"></emoji-mart>
+  </div>
+  <div class="emoji-wrapper-button">
+    <button mat-flat-button color="primary" (click)="submit()">OK</button>
+    <button mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+  </div>
+</div>

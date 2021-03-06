@@ -8,4 +8,15 @@
     padding: 2rem 3rem;
     max-width: 760px;
   }
+
+  @media screen and (min-width: 992px) {
+    display: flex;
+    .add-item-wrapper {
+      width: 40vw;
+    }
+
+    .list-item-wrapper {
+      width: 50vw;
+    }
+  }
 }

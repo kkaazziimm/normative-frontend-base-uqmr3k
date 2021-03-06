@@ -3,7 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: "edit-emoji-dialog",
-  templateUrl: "edit-emoji.component.html"
+  templateUrl: "edit-emoji.component.html",
+  styleUrls: ["./edit-emoji.component.scss"]
 })
 export class EditEmojiDialogComponent {
   currentEmoji: any;
