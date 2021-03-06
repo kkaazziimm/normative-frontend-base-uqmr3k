@@ -1,1 +1,16 @@
-<p>add-item works!</p>
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Ex. pat@example.com">
+  </mat-form-field>
+  <button mat-raised-button>Edit</button>
+  <button mat-raised-button>Submit</button>
+</form>
